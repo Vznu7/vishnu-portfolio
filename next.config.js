@@ -7,9 +7,6 @@ const nextConfig = {
     domains: ['images.unsplash.com', 'via.placeholder.com'],
     unoptimized: true,
   },
-  output: 'export',
-  trailingSlash: true,
-  basePath: process.env.NODE_ENV === 'production' ? '/vishnu-portfolio' : '',
 }
 
 module.exports = nextConfig
