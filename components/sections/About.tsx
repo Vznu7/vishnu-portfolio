@@ -49,10 +49,10 @@ const About = () => {
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="grid lg:grid-cols-2 gap-12 items-center"
+          className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center"
         >
-          {/* Left Column - Text Content */}
-          <div className="space-y-8">
+          {/* Left Column - Content */}
+          <motion.div className="space-y-6 lg:space-y-8 text-center lg:text-left" variants={itemVariants}>
             <motion.div variants={itemVariants} className="space-y-4">
               <motion.h1 
                 className="text-5xl lg:text-7xl font-bold"
@@ -91,7 +91,7 @@ const About = () => {
 
             {/* Stats */}
             <motion.div 
-              className="grid grid-cols-3 gap-6 py-8"
+              className="grid grid-cols-3 gap-4 lg:gap-6 py-6 lg:py-8"
               variants={itemVariants}
             >
               <div className="text-center">
@@ -110,7 +110,7 @@ const About = () => {
 
             {/* CTA Buttons */}
             <motion.div 
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
               variants={itemVariants}
             >
               <motion.button
@@ -132,18 +132,18 @@ const About = () => {
                 Let's Talk
               </motion.button>
             </motion.div>
-          </div>
+          </motion.div>
 
           {/* Right Column - Visual Elements */}
           <motion.div 
-            className="relative -mt-16 lg:-mt-20"
+            className="relative mt-8 lg:-mt-16 order-first lg:order-last"
             variants={itemVariants}
           >
             <div className="relative z-10">
               {/* Profile Image */}
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="w-80 h-80 mx-auto rounded-full bg-gradient-to-br from-primary-400 to-primary-600 p-1 overflow-hidden"
+                className="w-64 h-64 lg:w-80 lg:h-80 mx-auto rounded-full bg-gradient-to-br from-primary-400 to-primary-600 p-1 overflow-hidden"
               >
                 <div className="w-full h-full rounded-full overflow-hidden bg-dark-800 flex items-center justify-center">
                   <img

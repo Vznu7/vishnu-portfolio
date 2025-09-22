@@ -84,9 +84,9 @@ const Contact = () => {
           animate={inView ? "visible" : "hidden"}
         >
           {/* Main Footer Content */}
-          <div className="grid lg:grid-cols-3 gap-12 mb-12">
+          <div className="grid lg:grid-cols-3 gap-8 lg:gap-12 mb-8 lg:mb-12">
             {/* Brand & Description */}
-            <motion.div variants={itemVariants} className="lg:col-span-1">
+            <motion.div variants={itemVariants} className="lg:col-span-1 text-center lg:text-left">
               <motion.h3 
                 className="text-3xl font-bold gradient-text mb-4"
                 whileHover={{ scale: 1.05 }}
@@ -127,16 +127,17 @@ const Contact = () => {
               </div>
             </motion.div>
 
-            {/* Contact Information */}
-            <motion.div variants={itemVariants} className="lg:col-span-1">
+            {/* Contact Info */}
+            <motion.div variants={itemVariants} className="lg:col-span-1 text-center lg:text-left">
               <h4 className="text-2xl font-bold text-white mb-6">Get In Touch</h4>
-              <div className="space-y-4">
+              <div className="space-y-3 lg:space-y-4">
                 {contactInfo.map((info, index) => {
                   const IconComponent = info.icon
-                  const content = (
+                  return (
                     <motion.div
+                      key={info.label}
                       whileHover={{ x: 5 }}
-                      className="flex items-center gap-4 p-3 rounded-lg hover:bg-dark-800 transition-colors group"
+                      className="flex items-center justify-center lg:justify-start gap-3 text-gray-400 hover:text-primary-400 transition-colors"
                     >
                       <div className="p-2 bg-primary-500/20 rounded-lg group-hover:bg-primary-500/30 transition-colors">
                         <IconComponent className="w-5 h-5 text-primary-400" />
@@ -162,7 +163,7 @@ const Contact = () => {
             </motion.div>
 
             {/* Quick Links */}
-            <motion.div variants={itemVariants} className="lg:col-span-1">
+            <motion.div variants={itemVariants} className="lg:col-span-1 text-center lg:text-left">
               <h4 className="text-2xl font-bold text-white mb-6">Quick Links</h4>
               <div className="grid grid-cols-2 gap-2">
                 {[

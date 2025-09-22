@@ -112,21 +112,21 @@ const Freelance = () => {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
             {/* Left Column - Services & Info */}
-            <motion.div variants={itemVariants} className="space-y-8">
+            <motion.div variants={itemVariants} className="space-y-6 lg:space-y-8">
               <div>
-                <h3 className="text-3xl font-bold text-white mb-6">AI Services I Offer</h3>
-                <div className="space-y-6">
+                <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4 lg:mb-6 text-center lg:text-left">AI Services I Offer</h3>
+                <div className="space-y-4 lg:space-y-6">
                   {services.map((service, index) => {
                     const IconComponent = service.icon
                     return (
                       <motion.div
                         key={service.title}
                         whileHover={{ x: 10 }}
-                        className="flex items-start gap-4 p-4 rounded-xl bg-dark-800/50 hover:bg-dark-800 transition-colors"
+                        className="flex flex-col md:flex-row items-center md:items-start gap-4 p-4 rounded-xl bg-dark-800/50 hover:bg-dark-800 transition-colors text-center md:text-left"
                       >
-                        <div className="p-3 bg-primary-500/20 rounded-lg">
+                        <div className="p-3 bg-primary-500/20 rounded-lg flex-shrink-0">
                           <IconComponent className="w-6 h-6 text-primary-400" />
                         </div>
                         <div>
@@ -141,8 +141,8 @@ const Freelance = () => {
 
               {/* Expertise Areas */}
               <div>
-                <h4 className="text-2xl font-bold text-white mb-4">AI Expertise Areas</h4>
-                <div className="grid grid-cols-2 gap-4">
+                <h4 className="text-xl lg:text-2xl font-bold text-white mb-4 text-center lg:text-left">AI Expertise Areas</h4>
+                <div className="grid grid-cols-2 lg:grid-cols-2 gap-3 lg:gap-4">
                   {[
                     'LLM Integration',
                     'RAG Systems',

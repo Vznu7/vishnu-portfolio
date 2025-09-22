@@ -104,11 +104,11 @@ const Experience = () => {
             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-400 to-primary-600 hidden lg:block" />
 
             <div className="space-y-12">
-              {experiences.map((exp, index) => (
+              {experiences.map((experience, index) => (
                 <motion.div
-                  key={exp.id}
+                  key={experience.id}
                   variants={itemVariants}
-                  className="relative"
+                  className="glass p-4 lg:p-6 rounded-xl hover:bg-dark-700/50 transition-colors"
                 >
                   {/* Timeline Dot */}
                   <div className="absolute left-6 w-4 h-4 bg-primary-500 rounded-full border-4 border-dark-800 hidden lg:block" />
@@ -118,49 +118,40 @@ const Experience = () => {
                     whileHover={{ scale: 1.02 }}
                     className="lg:ml-20 glass p-8 rounded-xl card-hover"
                   >
-                    <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-6">
+                    <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-4 gap-2 lg:gap-0">
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-2">
                           <FiBriefcase className="w-5 h-5 text-primary-400" />
                           <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                            exp.type === 'Full-time' 
+                            experience.type === 'Full-time' 
                               ? 'bg-green-500/20 text-green-400' 
                               : 'bg-blue-500/20 text-blue-400'
                           }`}>
-                            {exp.type}
+                            {experience.type}
                           </span>
                         </div>
                         
-                        <h3 className="text-2xl font-bold text-white mb-2">
-                          {exp.title}
-                        </h3>
-                        
-                        <h4 className="text-xl text-primary-400 font-semibold mb-4">
-                          {exp.company}
-                        </h4>
-                        
-                        <div className="flex flex-col sm:flex-row gap-4 text-gray-400 mb-4">
-                          <div className="flex items-center gap-2">
-                            <FiCalendar className="w-4 h-4" />
-                            <span>{exp.period}</span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <FiMapPin className="w-4 h-4" />
-                            <span>{exp.location}</span>
-                          </div>
-                        </div>
+                        <h3 className="text-lg lg:text-xl font-bold text-white mb-1">{experience.title}</h3>
+                        <p className="text-primary-400 font-medium">{experience.company}</p>
+                      </div>
+                      <div className="text-center lg:text-right">
+                        <span className="inline-block px-3 py-1 bg-primary-500/20 text-primary-300 rounded-full text-sm font-medium mb-2">
+                          {experience.type}
+                        </span>
+                        <p className="text-gray-400 text-sm">{experience.location}</p>
+                        <p className="text-gray-400 text-sm">{experience.period}</p>
                       </div>
                     </div>
 
                     <p className="text-gray-300 mb-6 leading-relaxed">
-                      {exp.description}
+                      {experience.description}
                     </p>
 
                     {/* Key Achievements */}
                     <div className="mb-6">
                       <h5 className="text-lg font-semibold text-white mb-3">Key Achievements:</h5>
                       <ul className="space-y-2">
-                        {exp.achievements.map((achievement, idx) => (
+                        {experience.achievements.map((achievement, idx) => (
                           <li key={idx} className="flex items-start gap-2 text-gray-300">
                             <div className="w-2 h-2 bg-primary-400 rounded-full mt-2 flex-shrink-0" />
                             <span>{achievement}</span>
@@ -170,10 +161,9 @@ const Experience = () => {
                     </div>
 
                     {/* Technologies */}
-                    <div>
-                      <h5 className="text-lg font-semibold text-white mb-3">Technologies Used:</h5>
+                    <div className="text-center lg:text-left">
                       <div className="flex flex-wrap gap-2">
-                        {exp.technologies.map((tech, idx) => (
+                        {experience.technologies.map((tech, idx) => (
                           <span
                             key={idx}
                             className="px-3 py-1 bg-primary-500/20 text-primary-300 rounded-full text-sm font-medium"

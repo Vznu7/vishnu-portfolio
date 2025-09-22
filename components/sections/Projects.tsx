@@ -121,15 +121,13 @@ const Projects = () => {
           </motion.div>
 
           {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}
                 variants={itemVariants}
                 whileHover={{ y: -10 }}
-                className={`group relative overflow-hidden rounded-xl bg-dark-800 border border-gray-700 hover:border-primary-500 transition-all duration-300 ${
-                  project.featured ? 'md:col-span-2 lg:col-span-1' : ''
-                }`}
+                className="glass rounded-xl overflow-hidden card-hover group mx-auto max-w-sm md:max-w-none"
               >
                 {/* Featured Badge */}
                 {project.featured && (
@@ -139,7 +137,7 @@ const Projects = () => {
                 )}
 
                 {/* Project Image */}
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-40 md:h-48 overflow-hidden">
                   <Image
                     src={project.image}
                     alt={project.title}
@@ -174,9 +172,9 @@ const Projects = () => {
                 </div>
 
                 {/* Project Content */}
-                <div className="p-6">
+                <div className="p-4 lg:p-6">
                   <div className="flex items-start justify-between mb-3">
-                    <h3 className="text-xl font-bold text-white group-hover:text-primary-400 transition-colors">
+                    <h3 className="text-lg lg:text-xl font-bold text-white mb-2 group-hover:text-primary-400 transition-colors text-center md:text-left">
                       {project.title}
                     </h3>
                     <div className="flex items-center gap-3 text-sm text-gray-400">
@@ -191,12 +189,12 @@ const Projects = () => {
                     </div>
                   </div>
 
-                  <p className="text-gray-400 mb-4 leading-relaxed">
+                  <p className="text-gray-400 mb-4 line-clamp-3 text-center md:text-left text-sm lg:text-base">
                     {project.description}
                   </p>
 
                   {/* Technologies */}
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-2 mb-4 justify-center md:justify-start">
                     {project.technologies.map((tech, idx) => (
                       <span
                         key={idx}
@@ -207,8 +205,8 @@ const Projects = () => {
                     ))}
                   </div>
 
-                  {/* Action Links */}
-                  <div className="flex gap-3">
+                  {/* Project Links */}
+                  <div className="flex gap-4 justify-center md:justify-start">
                     <a
                       href={project.githubUrl}
                       target="_blank"

@@ -110,7 +110,7 @@ const Skills = () => {
           </motion.div>
 
           {/* Skills Grid */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
             {skillCategories.map((category, categoryIndex) => (
               <motion.div
                 key={category.title}
@@ -137,10 +137,12 @@ const Skills = () => {
                               whileHover={{ scale: 1.2, rotate: 5 }}
                               className="p-2 rounded-lg bg-dark-700 group-hover:bg-dark-600 transition-colors"
                             >
-                              <IconComponent 
-                                className="w-6 h-6" 
-                                style={{ color: skill.color }}
-                              />
+                              <div className="text-2xl lg:text-3xl mb-2 lg:mb-3 group-hover:scale-110 transition-transform">
+                                <IconComponent 
+                                  className="w-6 h-6" 
+                                  style={{ color: skill.color }}
+                                />
+                              </div>
                             </motion.div>
                             <span className="text-white font-medium">{skill.name}</span>
                           </div>
@@ -181,7 +183,7 @@ const Skills = () => {
           </div>
 
           {/* Additional Skills Cloud */}
-          <motion.div variants={itemVariants} className="mt-16">
+          <motion.div variants={itemVariants} className="space-y-6 lg:space-y-8">
             <h3 className="text-2xl font-bold text-center text-white mb-8">
               AI Tools & Frameworks I Work With
             </h3>
@@ -206,7 +208,7 @@ const Skills = () => {
           {/* Certifications */}
           <motion.div variants={itemVariants} className="mt-16 text-center">
             <h3 className="text-2xl font-bold text-white mb-8">Certifications</h3>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 lg:gap-4">
               {[
                 { name: 'AWS Machine Learning Specialty', issuer: 'Amazon Web Services', year: '2023' },
                 { name: 'TensorFlow Developer Certificate', issuer: 'Google', year: '2023' },
@@ -214,8 +216,8 @@ const Skills = () => {
               ].map((cert, index) => (
                 <motion.div
                   key={cert.name}
-                  whileHover={{ scale: 1.05 }}
-                  className="glass p-6 rounded-xl text-center"
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  className="glass p-3 lg:p-4 rounded-xl text-center group hover:bg-dark-700/50 transition-colors"
                 >
                   <h4 className="text-lg font-semibold text-white mb-2">{cert.name}</h4>
                   <p className="text-primary-400 mb-1">{cert.issuer}</p>
