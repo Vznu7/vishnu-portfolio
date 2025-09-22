@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('about')
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const navItems = [
     { name: 'About', href: '#about' },
@@ -45,6 +46,8 @@ const Navigation = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
     }
+    // Close mobile menu after navigation
+    setIsMobileMenuOpen(false)
   }
 
   return (
@@ -97,14 +100,48 @@ const Navigation = () => {
           <div className="md:hidden">
             <motion.button
               whileTap={{ scale: 0.95 }}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="text-white p-2"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                {isMobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
               </svg>
             </motion.button>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ 
+            opacity: isMobileMenuOpen ? 1 : 0,
+            height: isMobileMenuOpen ? 'auto' : 0
+          }}
+          transition={{ duration: 0.3 }}
+          className="md:hidden overflow-hidden bg-dark-900/95 backdrop-blur-md border-t border-white/10"
+        >
+          <div className="px-4 py-6 space-y-4">
+            {navItems.map((item) => (
+              <motion.button
+                key={item.name}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => scrollToSection(item.href)}
+                className={`block w-full text-left px-4 py-3 rounded-lg text-lg font-medium transition-colors duration-300 ${
+                  activeSection === item.href.substring(1)
+                    ? 'text-primary-400 bg-primary-400/10'
+                    : 'text-gray-300 hover:text-white hover:bg-white/5'
+                }`}
+              >
+                {item.name}
+              </motion.button>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </motion.nav>
   )
