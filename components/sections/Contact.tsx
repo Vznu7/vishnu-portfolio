@@ -133,7 +133,7 @@ const Contact = () => {
               <div className="space-y-3 lg:space-y-4">
                 {contactInfo.map((info, index) => {
                   const IconComponent = info.icon
-                  return (
+                  const content = (
                     <motion.div
                       key={info.label}
                       whileHover={{ x: 5 }}
