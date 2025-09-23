@@ -41,13 +41,66 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
     }
-    // Close mobile menu after navigation
+    
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [isMobileMenuOpen])
+
+  const scrollToSection = (href: string) => {
+    // Close mobile menu first to prevent interference
     setIsMobileMenuOpen(false)
+    
+    // Add a small delay to ensure menu closes before scrolling
+    setTimeout(() => {
+      const element = document.querySelector(href)
+      if (element) {
+        // Use both scrollIntoView and manual scroll for better mobile compatibility
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+        const offsetPosition = elementPosition - 80 // Account for fixed navbar height
+        
+        // Fallback for browsers that don't support smooth scrolling
+        if ('scrollBehavior' in document.documentElement.style) {
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          })
+        } else {
+          // Smooth scroll polyfill for older browsers/mobile devices
+          const startPosition = window.pageYOffset
+          const distance = offsetPosition - startPosition
+          const duration = 800
+          let start: number | null = null
+          
+          const step = (timestamp: number) => {
+            if (!start) start = timestamp
+            const progress = timestamp - start
+            const progressPercentage = Math.min(progress / duration, 1)
+            
+            // Easing function for smooth animation
+            const ease = progressPercentage < 0.5 
+              ? 2 * progressPercentage * progressPercentage 
+              : 1 - Math.pow(-2 * progressPercentage + 2, 2) / 2
+            
+            window.scrollTo(0, startPosition + distance * ease)
+            
+            if (progress < duration) {
+              window.requestAnimationFrame(step)
+            }
+          }
+          
+          window.requestAnimationFrame(step)
+        }
+      }
+    }, 100) // Small delay to ensure menu animation completes
   }
 
   return (
@@ -130,12 +183,25 @@ const Navigation = () => {
                 key={item.name}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => scrollToSection(item.href)}
-                className={`block w-full text-left px-4 py-3 rounded-lg text-lg font-medium transition-colors duration-300 ${
+                onClick={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  scrollToSection(item.href)
+                }}
+                onTouchEnd={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  scrollToSection(item.href)
+                }}
+                className={`block w-full text-left px-4 py-3 rounded-lg text-lg font-medium transition-colors duration-300 touch-manipulation ${
                   activeSection === item.href.substring(1)
                     ? 'text-primary-400 bg-primary-400/10'
-                    : 'text-gray-300 hover:text-white hover:bg-white/5'
+                    : 'text-gray-300 hover:text-white hover:bg-white/5 active:bg-white/10'
                 }`}
+                style={{ 
+                  WebkitTapHighlightColor: 'transparent',
+                  touchAction: 'manipulation'
+                }}
               >
                 {item.name}
               </motion.button>
