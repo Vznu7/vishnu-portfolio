@@ -47,12 +47,12 @@ const Projects = () => {
     },
     {
       id: 4,
-      title: 'Sentiment Analysis Dashboard',
-      description: 'Real-time sentiment analysis platform for social media monitoring using BERT and custom NLP models with interactive visualizations.',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop',
-      technologies: ['Python', 'BERT', 'TensorFlow', 'Plotly', 'MongoDB'],
-      githubUrl: 'https://github.com/vishnu/sentiment-dashboard',
-      liveUrl: 'https://sentiment-ai-dashboard.vercel.app',
+      title: 'ANN Churn Prediction Model',
+      description: 'Advanced customer churn prediction system using Artificial Neural Networks with comprehensive data preprocessing, feature engineering, and interactive Streamlit dashboard for real-time predictions.',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
+      technologies: ['Python', 'TensorFlow', 'Keras', 'Streamlit', 'Pandas', 'Scikit-learn'],
+      githubUrl: 'https://github.com/Vznu7/ANN-churn-prediction.git',
+      liveUrl: 'https://ann-churn-prediction-aewg9r4ky5ksz3fvx6guo5.streamlit.app/',
       featured: false,
       stats: { stars: 134, forks: 52 }
     },
