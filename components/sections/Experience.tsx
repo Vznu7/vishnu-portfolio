@@ -43,17 +43,18 @@ const Experience = () => {
     },
     {
       id: 3,
-      title: 'AI Research Intern',
-      company: 'TechStart AI',
+      title: 'AI Engineer',
+      company: 'Immersive Nexus',
       location: 'Remote',
-      period: '2020 - 2021',
+      period: 'Sep 15, 2025 - Dec 15, 2025',
       type: 'Internship',
-      description: 'Researched and implemented deep learning models for NLP tasks. Contributed to open-source AI projects and published research on transformer architectures.',
-      technologies: ['Python', 'TensorFlow', 'Hugging Face', 'Jupyter', 'Git'],
+      description: 'Engineered and deployed cutting-edge AI solutions including LLM-powered applications, computer vision systems, and intelligent automation workflows. Collaborated with cross-functional teams to integrate AI capabilities into immersive experiences.',
+      technologies: ['Python', 'OpenAI APIs', 'LangChain', 'TensorFlow', 'PyTorch', 'FastAPI', 'Docker'],
       achievements: [
-        'Published 2 research papers on transformer models',
-        'Contributed to 5+ open-source AI libraries',
-        'Built chatbot achieving 92% user satisfaction'
+        'Developed and deployed 3+ AI-powered applications using GPT-4 and LangChain',
+        'Implemented computer vision models achieving 94% accuracy for real-time processing',
+        'Built intelligent automation workflows reducing manual tasks by 70%',
+        'Optimized AI model inference time by 45% through advanced techniques'
       ]
     }
   ]

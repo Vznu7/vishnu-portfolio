@@ -58,12 +58,12 @@ const Projects = () => {
     },
     {
       id: 5,
-      title: 'AI Image Generator',
-      description: 'Custom image generation platform using Stable Diffusion with fine-tuned models, prompt optimization, and style transfer capabilities.',
-      image: 'https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=600&h=400&fit=crop',
-      technologies: ['Python', 'Stable Diffusion', 'PyTorch', 'Gradio', 'AWS'],
-      githubUrl: 'https://github.com/vishnu/ai-image-generator',
-      liveUrl: 'https://ai-image-gen.gradio.app',
+      title: 'Intelligent Workflow Automation Hub',
+      description: 'Advanced n8n workflow automation platform with seamless API integrations, automated data processing, and intelligent task orchestration for enhanced productivity.',
+      image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&h=400&fit=crop',
+      technologies: ['n8n', 'Node.js', 'TypeScript', 'REST APIs', 'Webhooks'],
+      githubUrl: 'https://github.com/Vznu7/n8n-workflows.git',
+      liveUrl: 'https://vishnuvznu.app.n8n.cloud/workflow/4xwgrlAAsHuCw2Sv',
       featured: false,
       stats: { stars: 298, forks: 112 }
     },
